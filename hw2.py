@@ -37,6 +37,15 @@
 # that it might not exist. 
 #
 
+import pandas as pd
+
+def read_data(filename):
+    try:
+        data = pd.read_csv(filename)
+        return data
+    except:
+        print(f"The file '{filename}' does not exist.")
+        return None
 
 # 5) Squash some bugs! 
 # Find the possible logical errors (bugs) 
@@ -46,20 +55,48 @@
 total_double_sum = 0
 for elem in [10, 5, 2]:
     double = elem * 2
-    total_double_sum += elem
+    total_double_sum += elem  #the problem is that in this line we are adding the original number 'elem' instead of 'double'
+
+#this would be the correct code:
+
+total_double_sum = 0
+for elem in [10, 5, 2]:
+    double = elem * 2
+    total_double_sum += double
 
 ### (b)
 strings = ''
 for string in ['I', 'am', 'Groot']:
-    strings = string+"_"+string
+    strings = string+"_"+string #the problem is that we are substituting the value 'strings' every time we enter the loop
+
+#this would be the correct code:
+
+strings = ''
+for string in ['I', 'am', 'Groot']:
+    if len(strings) > 0:
+        strings = strings+"_"+string
+    else:
+        strings = string
 
 ### (c) Careful!
 j=10
 while j > 0:
-   j += 1
+   j += 1  #this leads to an infinite loop, as j will always be bigger than 0
+
+#we should set a way to stop it, such as below:
+
+j=10
+while j < 100:
+    j+=1
 
 ### (d)
-productory = 0
+productory = 0 #since we initiate the variable at 0, any further multiplication will always just be 0
+for elem in [1, 5, 25]:
+    productory *= elem
+
+#we should set 'productory' equal to 1
+
+productory = 1
 for elem in [1, 5, 25]:
     productory *= elem
 

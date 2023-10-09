@@ -30,6 +30,29 @@
 # Name the first function "retrieve_age_eafp" and follow EAFP
 # Name the second function "retrieve_age_lbyl" and follow lbyl
 
+dic_1 = {'name': 'John', 'last_name': 'Doe', 'birth': 1987}
+dic_2 = {'name': 'Janet', 'last_name': 'Bird', 'gender': 'female'}
+
+def retrieve_age_eafp(dic):
+    try:
+        age = 2023-dic["birth"]
+        print(f"The age is: {age} (eafp)")
+    except KeyError:
+        print("The age Key is missing.")
+
+
+def retrieve_age_lbyl(dic):
+    if "birth" in dic:
+        age = 2023-dic["birth"]
+        print(f"The age is: {age} (lbyl)")
+    else:
+        print("Missing values")
+
+retrieve_age_lbyl(dic_1)
+retrieve_age_eafp(dic_1)
+retrieve_age_lbyl(dic_2)
+retrieve_age_eafp(dic_2)
+
 # 4)
 # Imagine you have a file named data.csv. 
 # Create a function called "read_data" that reads the file

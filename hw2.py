@@ -12,6 +12,30 @@
 # where <light> is the value of the parameter light.
 #
 
+def car_at_light(light):
+    if light == "red":
+        return "stop"
+    elif light == "green":
+        return "go"
+    elif light == "yellow":
+        return "wait"
+    else:
+        raise Exception(f"Undefined instruction for color: {light}")
+    
+
+# Testing green:
+car_at_light("green")
+
+# Testing red:
+car_at_light("red")
+
+# Testing yellow:
+car_at_light("yellow")
+
+# Testing other colour:
+car_at_light("blue")
+
+
 # 2)
 # Create a function named "safe_subtract" that
 # takes two parameters and returns the result of
@@ -20,6 +44,26 @@
 # it returns None.
 # If there is any other reason why it fails show the problem 
 # 
+
+def safe_subtract(x, y):
+    try:
+        return y - x
+    except TypeError:
+        return None
+    except Exception as e:
+        return str(e)
+
+    # Test of the function
+test_1 = safe_subtract(2, 10)  # returns 5
+test_2 = safe_subtract("hello", 5)  # it will return None due TypeError (string - integer (and hellow - 5 aswell), not possible)
+test_3 = safe_subtract(10, "5")  # it will return None due TypeError (integer - string, not possible)
+
+test_1, test_2, test_3
+
+
+
+
+
 
 # 3)
 # Imagine you have a dictionary with the attributes of a person
